@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(163, 222, 212);
+  margin: 0px;
+  padding: 0px;
+}
+
+#header {
+  width: 95%;
+  border: 2px solid rgb(115, 161, 172);
+  height: 35%;
+  background-color: rgb(241, 223, 240);
+  margin: 2% 2%
+}
+
+#app-title{
+    margin-left: 45%;
+}
+
+#theme-toggle{
+    margin-left: 85%;
+    margin-top: -55px;
+}
