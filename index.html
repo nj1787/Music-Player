@@ -14,8 +14,28 @@
       >
     </header>
     <main id="container">
-      <section id="all-songs"></section>
-      <section id="song-card"></section>
+      <section id="all-songs">
+        <select id="genre" onchange="displaySongsForSelectedGenre()">
+          <option selected>All</option>
+          <option value="hip-hop">Hip Hop</option>
+          <option value="rock">Rock</option>
+          <option value="western">Western</option>
+        </select>
+        <div id="display-songs">
+            <ul id="songs-list">
+                <!--List Elements Generated Using Javascript-->
+            </ul>
+        </div>
+      </section>
+      <section id="song-card">
+        <div id="song-image">
+            <img src="" alt="Song Image Here" width="200" height="200"/>
+        </div>
+        <div id="song-details">
+            <h3 id="song"></h3>
+            <p id="artist"></p>
+        </div>
+      </section>
       <section id="playlist"></section>
     </main>
     <script src="script.js"></script>

@@ -4,12 +4,21 @@ body {
   padding: 0px;
 }
 
+li{
+    list-style: none;
+}
+
 #header {
   width: 95%;
   border: 2px solid rgb(115, 161, 172);
   height: 35%;
   background-color: rgb(241, 223, 240);
   margin: 2% 2%
+}
+
+#container{
+    display: flex;
+    flex-direction: row;
 }
 
 #app-title{
@@ -19,4 +28,36 @@ body {
 #theme-toggle{
     margin-left: 85%;
     margin-top: -55px;
+}
+
+#all-songs{
+    margin: 5% 5%;
+    border: 3px solid rgb(112, 146, 131);
+    width: 20%;
+    height: auto;
+    padding: 2% 3%;
+    background-color: rgb(156, 191, 137);
+}
+
+#song-card{
+    margin: 5% 5%;
+    border: 3px solid rgb(112, 146, 131);
+    width: 35%;
+    height: auto;
+    background-color: rgb(200, 150, 180);
+}
+
+#playlist{
+    margin: 5% 5%;
+    border: 3px solid rgb(112, 146, 131);
+    width: 25%;
+    height: auto;
+    background-color: rgb(200, 150, 180);
+}
+
+.song-name{
+    width: 100%;
+    height: auto;
+    border: 2px solid black;
+    margin: 2% 2%;
 }
