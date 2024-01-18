@@ -48,6 +48,8 @@ li{
 }
 
 #playlist{
+    display: flex;
+    flex-direction: column;
     margin: 5% 5%;
     border: 3px solid rgb(112, 146, 131);
     width: 25%;
@@ -60,4 +62,10 @@ li{
     height: auto;
     border: 2px solid black;
     margin: 2% 2%;
+}
+.playlist-name{
+    width: 100%;
+    height: auto;
+    border: 2px solid black;
+    margin: 4px -30px
 }

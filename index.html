@@ -21,22 +21,41 @@
           <option value="rock">Rock</option>
           <option value="western">Western</option>
         </select>
+        <h3>All Songs</h3>
         <div id="display-songs">
-            <ul id="songs-list">
-                <!--List Elements Generated Using Javascript-->
-            </ul>
+          <ul id="songs-list">
+            <!--List Elements Generated Using Javascript-->
+          </ul>
         </div>
       </section>
       <section id="song-card">
-        <div id="song-image">
-            <img src="" alt="Song Image Here" width="200" height="200"/>
+        <div>
+          <img id="song-image" alt="Song Image Here" width="200" height="200" />
         </div>
         <div id="song-details">
-            <h3 id="song"></h3>
-            <p id="artist"></p>
+          <h3 id="song"></h3>
+          <p id="artist"></p>
+        </div>
+        <button id="previous">Previous</button><button id="next">Next</button>
+        <br />
+        <button id="add">Add To Playlist</button>
+      </section>
+      <section id="playlist">
+        <input
+          type="text"
+          id="playlist-name"
+          value=""
+          placeholder="Enter Playlist Name"
+        /><button id="create-playlist">Create Playlist</button>
+        <h3>Current Playlist</h3>
+        <div>
+          <ul id="current-playlist"></ul>
+        </div>
+        <h3>All Playlist</h3>
+        <div>
+          <ul id="all-playlists"></ul>
         </div>
       </section>
-      <section id="playlist"></section>
     </main>
     <script src="script.js"></script>
   </body>
