@@ -29,11 +29,15 @@ const musicLibrary = [
   },
 ];
 
+let playlists = [];
+
 let lightTheme = true;
 
 var currentGenre = "all";
 
 var currentSongIndex = 0;
+
+var currentPlaylistName = "";
 
 const songsList = document.getElementById("songs-list");
 
@@ -51,7 +55,9 @@ const playlistInput = document.getElementById("playlist-name");
 
 const createPlaylistBtn = document.getElementById("create-playlist");
 
-var current = ""; // current selected playlist
+const currentPlaylist = document.getElementById("current-playlist");
+
+const allPlaylists = document.getElementById("all-playlists");
 
 const { songName, artist, songImage } = musicLibrary[0];
 
@@ -70,6 +76,11 @@ themeButton.addEventListener("click", () => {
     document.body.style.backgroundColor = "rgb(163, 222, 212)";
   }
 });
+
+createPlaylistBtn.addEventListener("click", createPlaylist);
+
+next.addEventListener("click", displayNextSong);
+previous.addEventListener("click", displayPreviousSong);
 
 musicLibrary.forEach((song) => {
   const li = document.createElement("li");
@@ -127,7 +138,7 @@ function displaySongDetails(obj) {
     next.removeAttribute("disabled");
     previous.removeAttribute("disabled");
   }
-  
+
   const { songName, artist, songImage } = data[0];
   image.setAttribute("src", songImage);
   const song = document.getElementById("song");
@@ -135,9 +146,6 @@ function displaySongDetails(obj) {
   const songArtist = document.getElementById("artist");
   songArtist.innerHTML = artist;
 }
-
-next.addEventListener("click", displayNextSong);
-previous.addEventListener("click", displayPreviousSong);
 
 function displayNextSong() {
   currentSongIndex += 1;
@@ -167,7 +175,6 @@ function displayNextSong() {
   song.innerHTML = songName;
   const songArtist = document.getElementById("artist");
   songArtist.innerHTML = artist;
-  console.log(currentSongIndex);
 }
 
 function displayPreviousSong() {
@@ -198,14 +205,7 @@ function displayPreviousSong() {
   song.innerHTML = songName;
   const songArtist = document.getElementById("artist");
   songArtist.innerHTML = artist;
-  console.log(currentSongIndex);
 }
-
-createPlaylistBtn.addEventListener("click", createPlaylist);
-
-const currentPlaylist = document.getElementById("current-playlist");
-
-const allPlaylists = document.getElementById("all-playlists");
 
 function createPlaylist() {
   const playlistName = playlistInput.value;
@@ -213,10 +213,53 @@ function createPlaylist() {
     alert("Playlist Name Cannot Be Empty...!");
     return;
   }
-  document.createElement("li");
+  //   const li = document.createElement("li");
+  //   li.setAttribute("class", "playlist-name");
+  //   li.setAttribute("onClick", "addSongToSelectedPlaylist()");
+  //   li.innerHTML = playlistName;
+  //   allPlaylists.append(li);
+  //   playlistInput.value = "";
+  const newPlaylist = {
+    name: playlistName,
+    songs: [],
+  };
+  playlists.push(newPlaylist);
   const li = document.createElement("li");
   li.setAttribute("class", "playlist-name");
-  li.innerHTML = playlistName;
+  //   li.setAttribute("onClick", "addSongToSelectedPlaylist(event)");
+  li.addEventListener("click", addSongToSelectedPlaylist);
+  li.innerHTML = newPlaylist.name;
   allPlaylists.append(li);
   playlistInput.value = "";
+}
+
+function addSongToSelectedPlaylist(event) {
+  const playlistname = event.target.innerHTML;
+  currentPlaylistName = playlistname;
+  const desiredPlaylist = playlists.filter(
+    (p) => p.name === currentPlaylistName
+  );
+  const { songs } = desiredPlaylist[0];
+  if (songs.length === 0) {
+    const li = document.createElement("li");
+    li.innerHTML = "";
+    currentPlaylist.append(li);
+  } else {
+    songs.forEach((s) => {
+      const li = document.createElement("li");
+      li.innerHTML = s.songName;
+      currentPlaylist.append(li);
+    });
+  }
+  //   songs.forEach((s) => {
+  //     const li = document.createElement("li");
+  //     li.innerHTML = s.songName;
+  //     currentPlaylist.append(li);
+  //   });
+  addToPlaylistBtn.addEventListener("click", () => {
+    const song = musicLibrary[currentSongIndex];
+    const { songs } = desiredPlaylist[0];
+    songs.push(song);
+    console.log(songs);
+  });
 }
