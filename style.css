@@ -63,6 +63,14 @@ li{
     border: 2px solid black;
     margin: 2% 2%;
 }
+
+.song-name-playlist{
+    width: 100%;
+    height: auto;
+    border: 2px solid black;
+    margin: 2px -30px
+}
+
 .playlist-name{
     width: 100%;
     height: auto;

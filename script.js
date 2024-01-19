@@ -233,33 +233,80 @@ function createPlaylist() {
   playlistInput.value = "";
 }
 
+// Faced Difficulty Implementing Below Functionality.
+
 function addSongToSelectedPlaylist(event) {
-  const playlistname = event.target.innerHTML;
-  currentPlaylistName = playlistname;
-  const desiredPlaylist = playlists.filter(
-    (p) => p.name === currentPlaylistName
-  );
-  const { songs } = desiredPlaylist[0];
-  if (songs.length === 0) {
-    const li = document.createElement("li");
-    li.innerHTML = "";
-    currentPlaylist.append(li);
-  } else {
-    songs.forEach((s) => {
+  const playlistName = event.target.innerHTML;
+  currentPlaylistName = playlistName;
+
+  // Clear current playlist section
+  currentPlaylist.innerHTML = "";
+
+  const desiredPlaylist = playlists.find((p) => p.name === currentPlaylistName);
+
+  if (desiredPlaylist && desiredPlaylist.songs.length > 0) {
+    desiredPlaylist.songs.forEach((s) => {
       const li = document.createElement("li");
+      li.setAttribute("class", "song-name-playlist");
       li.innerHTML = s.songName;
       currentPlaylist.append(li);
     });
+  } else {
+    // Handle case when no songs in the selected playlist
+    const li = document.createElement("li");
+    li.innerHTML = "No songs in this playlist.";
+    currentPlaylist.append(li);
   }
-  //   songs.forEach((s) => {
-  //     const li = document.createElement("li");
-  //     li.innerHTML = s.songName;
-  //     currentPlaylist.append(li);
-  //   });
-  addToPlaylistBtn.addEventListener("click", () => {
-    const song = musicLibrary[currentSongIndex];
-    const { songs } = desiredPlaylist[0];
-    songs.push(song);
-    console.log(songs);
-  });
+
+  // Remove all previous event listeners on the "Add To Playlist" button
+  addToPlaylistBtn.removeEventListener("click", handleAddToPlaylist);
+
+  // Add a single event listener based on the current playlist
+  addToPlaylistBtn.addEventListener("click", handleAddToPlaylist);
 }
+
+function handleAddToPlaylist() {
+  const song = musicLibrary[currentSongIndex];
+  const desiredPlaylist = playlists.find((p) => p.name === currentPlaylistName);
+
+  if (desiredPlaylist) {
+    if (desiredPlaylist.songs.indexOf(song) !== -1) {
+      alert("Song Already Present In Playlist.");
+    } else {
+      desiredPlaylist.songs.push(song);
+      // Update the current playlist section
+      addSongToSelectedPlaylist(event);
+    }
+  }
+}
+
+// function addSongToSelectedPlaylist(event) {
+//   const playlistname = event.target.innerHTML;
+//   currentPlaylistName = playlistname;
+//   const desiredPlaylist = playlists.filter(
+//     (p) => p.name === currentPlaylistName
+//   );
+//   const { songs } = desiredPlaylist[0];
+//   if (songs.length === 0) {
+//     const li = document.createElement("li");
+//     li.innerHTML = "";
+//     currentPlaylist.append(li);
+//   } else {
+//     songs.forEach((s) => {
+//       const li = document.createElement("li");
+//       li.innerHTML = s.songName;
+//       currentPlaylist.append(li);
+//     });
+//   }
+//   //   songs.forEach((s) => {
+//   //     const li = document.createElement("li");
+//   //     li.innerHTML = s.songName;
+//   //     currentPlaylist.append(li);
+//   //   });
+//   addToPlaylistBtn.addEventListener("click", () => {
+//     const song = musicLibrary[currentSongIndex];
+//     const { songs } = desiredPlaylist[0];
+//     songs.push(song);
+//     console.log(songs);
+//   });
+// }
