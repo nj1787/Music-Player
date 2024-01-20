@@ -5,6 +5,8 @@ const musicLibrary = [
     artist: "Ed Shereen",
     songImage:
       "https://upload.wikimedia.org/wikipedia/en/b/b4/Shape_Of_You_%28Official_Single_Cover%29_by_Ed_Sheeran.png",
+    songFilePath:
+      "./audioFiles/Shape-of-You---Ed-Sheeran(musicdownload.cc).mp3",
   },
   {
     songName: "Not Afraid",
@@ -12,6 +14,7 @@ const musicLibrary = [
     artist: "Eminem",
     songImage:
       "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/Eminem_-_Not_Afraid.jpg/220px-Eminem_-_Not_Afraid.jpg",
+    songFilePath: "./audioFiles/Eminem-Not-Afraid-Official-Video.mp3",
   },
   {
     songName: "Rock The Party",
@@ -45,6 +48,8 @@ const themeButton = document.querySelector("#theme-toggle");
 
 const image = document.getElementById("song-image");
 
+const songControls = document.getElementById("song-play-controls");
+
 const previous = document.getElementById("previous");
 
 const next = document.getElementById("next");
@@ -59,14 +64,18 @@ const currentPlaylist = document.getElementById("current-playlist");
 
 const allPlaylists = document.getElementById("all-playlists");
 
-const { songName, artist, songImage } = musicLibrary[0];
+const { songName, artist, songImage, songFilePath } = musicLibrary[0];
 
 image.setAttribute("src", songImage);
 const song = document.getElementById("song");
 song.innerHTML = songName;
 const songArtist = document.getElementById("artist");
 songArtist.innerHTML = artist;
+const audio = document.createElement("audio");
+audio.setAttribute("src", songFilePath);
+audio.setAttribute("controls", "true");
 previous.setAttribute("disabled", "true");
+songControls.append(audio);
 
 themeButton.addEventListener("click", () => {
   lightTheme = !lightTheme;
@@ -127,7 +136,6 @@ function displaySongDetails(obj) {
   );
   const songIndex = musicLibrary.indexOf(data[0]);
   currentSongIndex = songIndex;
-
   if (currentSongIndex === 0) {
     previous.setAttribute("disabled", "true");
     next.removeAttribute("disabled");
@@ -139,12 +147,17 @@ function displaySongDetails(obj) {
     previous.removeAttribute("disabled");
   }
 
-  const { songName, artist, songImage } = data[0];
+  const { songName, artist, songImage, songFilePath } = data[0];
   image.setAttribute("src", songImage);
   const song = document.getElementById("song");
   song.innerHTML = songName;
   const songArtist = document.getElementById("artist");
   songArtist.innerHTML = artist;
+  songControls.innerHTML = "";
+  const newAudio = document.createElement("audio");
+  newAudio.setAttribute("src", songFilePath);
+  newAudio.setAttribute("controls", "true");
+  songControls.append(newAudio);
 }
 
 function displayNextSong() {
@@ -169,12 +182,17 @@ function displayNextSong() {
   }
 
   const data = musicLibrary.filter((e, index) => index === currentSongIndex);
-  const { songName, artist, songImage } = data[0];
+  const { songName, artist, songImage, songFilePath } = data[0];
   image.setAttribute("src", songImage);
   const song = document.getElementById("song");
   song.innerHTML = songName;
   const songArtist = document.getElementById("artist");
   songArtist.innerHTML = artist;
+  songControls.innerHTML = "";
+  const anotherNewAudio = document.createElement("audio");
+  anotherNewAudio.setAttribute("src", songFilePath);
+  anotherNewAudio.setAttribute("controls", "true");
+  songControls.append(anotherNewAudio);
 }
 
 function displayPreviousSong() {
@@ -199,12 +217,17 @@ function displayPreviousSong() {
   }
 
   const data = musicLibrary.filter((e, index) => index === currentSongIndex);
-  const { songName, artist, songImage } = data[0];
+  const { songName, artist, songImage, songFilePath } = data[0];
   image.setAttribute("src", songImage);
   const song = document.getElementById("song");
   song.innerHTML = songName;
   const songArtist = document.getElementById("artist");
   songArtist.innerHTML = artist;
+  songControls.innerHTML = "";
+  const newAudio = document.createElement("audio");
+  newAudio.setAttribute("src", songFilePath);
+  newAudio.setAttribute("controls", "true");
+  songControls.append(newAudio);
 }
 
 function createPlaylist() {
