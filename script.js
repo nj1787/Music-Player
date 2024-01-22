@@ -153,7 +153,7 @@ function displaySongDetails(obj) {
   song.innerHTML = songName;
   const songArtist = document.getElementById("artist");
   songArtist.innerHTML = artist;
-  songControls.innerHTML = "";
+  songControls.innerHTML = ""; // to remove song control of previous selected song.
   const newAudio = document.createElement("audio");
   newAudio.setAttribute("src", songFilePath);
   newAudio.setAttribute("controls", "true");
