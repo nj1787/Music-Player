@@ -2,10 +2,12 @@ body {
   background-color: rgb(163, 222, 212);
   margin: 0px;
   padding: 0px;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
-
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 
 #header {
@@ -13,67 +15,110 @@ li{
   border: 2px solid rgb(115, 161, 172);
   height: 35%;
   background-color: rgb(241, 223, 240);
-  margin: 2% 2%
+  margin: 2% 2%;
+  font-size: 1.8em;
 }
 
-#container{
-    display: flex;
-    flex-direction: row;
+#container {
+  display: flex;
+  flex-direction: row;
 }
 
-#app-title{
-    margin-left: 45%;
+select {
+  width: 100%;
+  height: 12%;
+  padding: 2px 35px;
+  font-family: "Lilita One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-left: 5%;
+  font-size: x-large;
 }
 
-#theme-toggle{
-    margin-left: 85%;
-    margin-top: -55px;
+.heading {
+  font-size: 2rem;
+  margin-left: 15%;
 }
 
-#all-songs{
-    margin: 5% 5%;
-    border: 3px solid rgb(112, 146, 131);
-    width: 20%;
-    height: auto;
-    padding: 2% 3%;
-    background-color: rgb(156, 191, 137);
+#app-title {
+  margin-left: 45%;
 }
 
-#song-card{
-    margin: 5% 5%;
-    border: 3px solid rgb(112, 146, 131);
-    width: 35%;
-    height: auto;
-    background-color: rgb(200, 150, 180);
+#theme-toggle {
+  margin-left: 85%;
+  margin-top: -55px;
 }
 
-#playlist{
-    display: flex;
-    flex-direction: column;
-    margin: 5% 5%;
-    border: 3px solid rgb(112, 146, 131);
-    width: 25%;
-    height: auto;
-    background-color: rgb(200, 150, 180);
+#all-songs {
+  margin: 5% 2%;
+  border: 3px solid rgb(112, 146, 131);
+  width: 20%;
+  height: auto;
+  padding: 2% 3%;
+  background-color: rgb(156, 191, 137);
 }
 
-.song-name{
-    width: 100%;
-    height: auto;
-    border: 2px solid black;
-    margin: 2% 2%;
+#song-card {
+  margin: 5% 5%;
+  border: 3px solid rgb(112, 146, 131);
+  width: 35%;
+  height: auto;
+  background-color: rgb(200, 150, 180);
 }
 
-.song-name-playlist{
-    width: 100%;
-    height: auto;
-    border: 2px solid black;
-    margin: 2px -30px
+#song-card img {
+  padding: 5% 22%;
 }
 
-.playlist-name{
-    width: 100%;
-    height: auto;
-    border: 2px solid black;
-    margin: 4px -30px
+#song {
+  margin-left: 25%;
+  font-size: x-large;
+}
+
+#artist {
+  margin-left: 25%;
+  font-size: large;
+}
+
+#song-play-controls{
+    margin: 3% 15%;
+}
+
+#playlist {
+  display: flex;
+  flex-direction: column;
+  margin: 5% 5%;
+  border: 3px solid rgb(112, 146, 131);
+  width: 25%;
+  height: auto;
+  background-color: rgb(200, 150, 180);
+}
+
+.song-name {
+  width: 100%;
+  height: 35px;
+  border: 2px solid black;
+  margin: 10% -15px;
+  padding: 4% 5%;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+.song-name:hover {
+  background-color: beige;
+  transition: ease-in-out 900ms;
+}
+
+.song-name-playlist {
+  width: 100%;
+  height: auto;
+  border: 2px solid black;
+  margin: 2px -30px;
+}
+
+.playlist-name {
+  width: 100%;
+  height: auto;
+  border: 2px solid black;
+  margin: 4px -30px;
 }

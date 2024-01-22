@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -21,7 +27,7 @@
           <option value="rock">Rock</option>
           <option value="western">Western</option>
         </select>
-        <h3>All Songs</h3>
+        <h3 class="heading">All Songs</h3>
         <div id="display-songs">
           <ul id="songs-list">
             <!--List Elements Generated Using Javascript-->
@@ -37,6 +43,7 @@
           <p id="artist"></p>
         </div>
         <div id="song-play-controls">
+          <!--Audio Element Created Using Javascript-->
         </div>
         <button id="previous">Previous</button><button id="next">Next</button>
         <br />
